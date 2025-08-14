@@ -15,69 +15,17 @@
                     </div>
 
                     <ul class="space-y-2">
-                        <x-classification-item
-                            type="clans"
-                            name="Guerreiros Elite"
-                            details="Nível 20 • 50/50 membros"
-                            points="45,789"
-                            position="1"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M50,20 L60,40 L80,45 L65,60 L70,80 L50,70 L30,80 L35,60 L20,45 L40,40 Z" fill="#F7B500"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="clans"
-                            name="Dragões do Brasil"
-                            details="Nível 18 • 48/50 membros"
-                            points="43,210"
-                            position="2"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="#F74B00"></path>
-                                <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="#F7B500"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="clans"
-                            name="Fúria Noturna"
-                            details="Nível 17 • 49/50 membros"
-                            points="41,567"
-                            position="3"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M50,20 L20,80 L80,80 Z" fill="#4CAF50"></path>
-                                <circle cx="50" cy="50" r="15" fill="#F7B500"></circle>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="clans"
-                            name="Reis da Guerra"
-                            details="Nível 16 • 47/50 membros"
-                            points="39,845"
-                            position="4"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="30" fill="#9C27B0"></circle>
-                                <circle cx="50" cy="50" r="15" fill="#F7B500"></circle>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="clans"
-                            name="Gladiadores BR"
-                            details="Nível 15 • 50/50 membros"
-                            points="38,921"
-                            position="5"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <rect x="25" y="25" width="50" height="50" fill="#F7B500"></rect>
-                                <rect x="40" y="40" width="20" height="20" fill="#F74B00"></rect>
-                            </svg>
-                        </x-classification-item>
+                        @foreach($clans as $clan)
+                            <x-classification-item
+                                type="clans"
+                                :name="$clan['name']"
+                                details="{{ $clan['clanLevel'] }} • {{ $clan['members'] }}/50 membros"
+                                :points="$clan['clanPoints']"
+                                :position="$clan['rank']"
+                            >
+                                <img src="{{ $clan['badgeUrls']['small'] }}" alt="badge">
+                            </x-classification-item>
+                        @endforeach
                     </ul>
 
                     <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">

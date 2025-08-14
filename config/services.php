@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'clash' => [
+        'token' => env('CLASH_API_TOKEN'),
+    ],
 ];

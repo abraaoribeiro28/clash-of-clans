@@ -11,7 +11,7 @@
         <span @class(['pr-3' => $position == 1, 'pr-5' => $position > 1])></span>
     @endif
     <div class="w-full flex flex-wrap items-center">
-        <div class="sm:w-10 sm:h-10 w-8 h-8 bg-blue-800 rounded-full flex items-center justify-center mr-3 border-2 border-yellow-500">
+        <div class="sm:w-10 sm:h-10 w-8 h-8 flex items-center justify-center mr-3">
             {{ $slot }}
         </div>
         <div class="flex-grow sm:mb-0 mb-2">
