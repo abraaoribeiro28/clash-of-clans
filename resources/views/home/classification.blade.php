@@ -1,4 +1,4 @@
-<section class="py-16 bg-gradient-to-b from-transparent to-indigo-900/20">
+<section id="classificacoes" class="py-16 bg-gradient-to-b from-transparent to-indigo-900/20">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold mb-10 text-center gold-gradient">CLASSIFICAÇÕES DO BRASIL</h2>
         <div>

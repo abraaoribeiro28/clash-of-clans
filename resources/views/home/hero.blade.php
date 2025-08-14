@@ -1,4 +1,4 @@
-<section class="relative overflow-hidden md:h-screen">
+<section id="inicio" class="relative overflow-hidden md:h-screen">
     <div class="absolute inset-0 z-0">
         <div class="w-full h-full blur-sm bg-hero"></div>
         <div class="absolute inset-0 bg-black/40"></div>
