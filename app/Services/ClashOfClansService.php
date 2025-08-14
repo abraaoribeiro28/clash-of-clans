@@ -33,4 +33,11 @@ class ClashOfClansService
 
         return collect($data['items'])->take($limit);
     }
+
+    public function getTopPlayers($locationId = '32000006', $limit = 10)
+    {
+        $data = $this->request('get', "/locations/{$locationId}/rankings/players");
+
+        return collect($data['items'])->take($limit);
+    }
 }

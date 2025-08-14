@@ -17,6 +17,10 @@ class HomeController extends Controller
             return $clash->getTopClans('32000249');
         });
 
-        return view('home.app', compact('clans'));
+        $players = Cache::remember('topPlayers', 3600, function () use ($clash) {
+            return $clash->getTopPlayers('32000249');
+        });
+
+        return view('home.app', compact('clans', 'players'));
     }
 }

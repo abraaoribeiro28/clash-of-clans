@@ -46,66 +46,17 @@
                     </div>
 
                     <ul class="space-y-2">
-                        <x-classification-item
-                            type="players"
-                            name="ClashMaster"
-                            details="CV 14 • Guerreiros Elite"
-                            points="6,789"
-                            position="1"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </x-classification-item>
-
-
-                        <x-classification-item
-                            type="players"
-                            name="BRLegend"
-                            details="CV 14 • Dragões do Brasil"
-                            points="6,654"
-                            position="2"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="players"
-                            name="ClashKing"
-                            details="CV 14 • Fúria Noturna"
-                            points="6,521"
-                            position="3"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="players"
-                            name="WarMachine"
-                            details="CV 14 • Reis da Guerra"
-                            points="6,432"
-                            position="4"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="players"
-                            name="ElitePlayer"
-                            details="CV 14 • Gladiadores BR"
-                            points="6,387"
-                            position="5"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                        </x-classification-item>
+                        @foreach($players as $player)
+                            <x-classification-item
+                                type="clans"
+                                :name="$player['name']"
+                                details="{{ $player['tag'] }} • {{ $player['clan']['name'] }}"
+                                :points="$player['trophies']"
+                                :position="$player['rank']"
+                            >
+                                <img src="{{ $player['clan']['badgeUrls']['small'] }}" alt="badge">
+                            </x-classification-item>
+                        @endforeach
                     </ul>
 
                     <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
