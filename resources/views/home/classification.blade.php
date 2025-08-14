@@ -13,13 +13,12 @@
                         </h3>
                         <span class="bg-blue-700 text-xs px-2 py-1 rounded-full text-nowrap">Top 10</span>
                     </div>
-
                     <ul class="space-y-2">
                         @foreach($clans as $clan)
                             <x-classification-item
                                 type="clans"
                                 :name="$clan['name']"
-                                details="{{ $clan['clanLevel'] }} • {{ $clan['members'] }}/50 membros"
+                                details="Nível {{ $clan['clanLevel'] }} • {{ $clan['members'] }}/50 membros"
                                 :points="$clan['clanPoints']"
                                 :position="$clan['rank']"
                             >
@@ -27,13 +26,11 @@
                             </x-classification-item>
                         @endforeach
                     </ul>
-
                     <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
                         Ver Ranking Completo
                     </button>
                 </div>
 
-                <!-- Players Ranking -->
                 <div id="players-tab" class="card rounded-lg p-6">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-xl font-bold flex items-center">
@@ -48,7 +45,7 @@
                     <ul class="space-y-2">
                         @foreach($players as $player)
                             <x-classification-item
-                                type="clans"
+                                type="players"
                                 :name="$player['name']"
                                 details="{{ $player['tag'] }} • {{ $player['clan']['name'] }}"
                                 :points="$player['trophies']"
@@ -58,13 +55,11 @@
                             </x-classification-item>
                         @endforeach
                     </ul>
-
                     <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
                         Ver Ranking Completo
                     </button>
                 </div>
 
-                <!-- Leagues Ranking -->
                 <div id="leagues-tab" class="card rounded-lg p-6">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-xl font-bold flex items-center">
@@ -75,70 +70,17 @@
                         </h3>
                         <span class="bg-blue-700 text-xs px-2 py-1 rounded-full">Todas</span>
                     </div>
-
                     <ul class="space-y-2">
-                        <x-classification-item
-                            type="league"
-                            name="Liga Lendária I"
-                            details="Elite dos jogadores"
-                            points="5,000+"
-                            position="1"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M50,20 L60,40 L80,45 L65,60 L70,80 L50,70 L30,80 L35,60 L20,45 L40,40 Z" fill="#FFF"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="league"
-                            name="Liga Lendária II"
-                            details="Elite dos jogadores"
-                            points="4,700+"
-                            position="2"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M50,20 L60,40 L80,45 L65,60 L70,80 L50,70 L30,80 L35,60 L20,45 L40,40 Z" fill="#FFF"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="league"
-                            name="Liga Lendária III"
-                            details="Elite dos jogadores"
-                            points="4,400+"
-                            position="3"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M50,20 L60,40 L80,45 L65,60 L70,80 L50,70 L30,80 L35,60 L20,45 L40,40 Z" fill="#FFF"></path>
-                            </svg>
-                        </x-classification-item>
-
-
-                        <x-classification-item
-                            type="league"
-                            name="Liga Titã I"
-                            details="Jogadores avançados"
-                            points="4,100+"
-                            position="4"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="#FFF"></path>
-                            </svg>
-                        </x-classification-item>
-
-                        <x-classification-item
-                            type="league"
-                            name="Liga Titã II"
-                            details="Jogadores avançados"
-                            points="3,800+"
-                            position="5"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100">
-                                <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="#FFF"></path>
-                            </svg>
-                        </x-classification-item>
+                        @foreach($leagues as $league)
+                            <x-classification-item
+                                type="league"
+                                :name="$league['name']"
+                                :position="$loop->iteration"
+                            >
+                                <img src="{{ $league['iconUrls']['small'] }}" alt="badge">
+                            </x-classification-item>
+                        @endforeach
                     </ul>
-
                     <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
                         Ver Detalhes das Ligas
                     </button>

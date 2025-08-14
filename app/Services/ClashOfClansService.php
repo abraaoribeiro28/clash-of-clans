@@ -74,4 +74,23 @@ class ClashOfClansService
 
         return collect($data['items'])->take($limit);
     }
+
+    /**
+     * Get top leagues by location.
+     *
+     * @param string $locationId
+     * @param int    $limit
+     *
+     * @return Collection
+     *
+     * @throws RuntimeException
+     */
+    public function getTopLeagues(string $locationId = '32000006', int $limit = 10): Collection
+    {
+        $data = $this->request('get', "/leagues");
+
+        return collect($data['items'] ?? [])
+            ->sortByDesc('id')
+            ->take($limit);
+    }
 }
