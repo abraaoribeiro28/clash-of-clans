@@ -6,7 +6,7 @@
     <title>COC - Clash Of Clans</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-[#0A0E23] text-white">
     <x-layouts.header/>
     <main>
         {{ $slot }}
