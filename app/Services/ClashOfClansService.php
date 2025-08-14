@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
+use Exception;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use RuntimeException;
 
 class ClashOfClansService
 {
@@ -15,26 +18,57 @@ class ClashOfClansService
         $this->token = config('services.clash.token');
     }
 
-    protected function request($method, $endpoint, $params = [])
+    /**
+     * Send a request to Clash of Clans API.
+     *
+     * @param string $method
+     * @param string $endpoint
+     * @param array  $params
+     *
+     * @return array
+     *
+     * @throws RuntimeException
+     */
+    protected function request(string $method, string $endpoint, array $params = []): array
     {
         $response = Http::withToken($this->token)
             ->$method($this->baseUrl . $endpoint, $params);
 
         if ($response->failed()) {
-            throw new \Exception("Erro na API do Clash of Clans: " . $response->body());
+            throw new RuntimeException("Clash of Clans API error: " . $response->body());
         }
 
         return $response->json();
     }
 
-    public function getTopClans($locationId = '32000006', $limit = 10)
+    /**
+     * Get top clans by location.
+     *
+     * @param string $locationId
+     * @param int    $limit
+     *
+     * @return Collection
+     *
+     * @throws RuntimeException
+     */
+    public function getTopClans(string $locationId = '32000006', int $limit = 10): Collection
     {
         $data = $this->request('get', "/locations/{$locationId}/rankings/clans");
 
         return collect($data['items'])->take($limit);
     }
 
-    public function getTopPlayers($locationId = '32000006', $limit = 10)
+    /**
+     * Get top players by location.
+     *
+     * @param string $locationId
+     * @param int    $limit
+     *
+     * @return Collection
+     *
+     * @throws RuntimeException
+     */
+    public function getTopPlayers(string $locationId = '32000006', int $limit = 10): Collection
     {
         $data = $this->request('get', "/locations/{$locationId}/rankings/players");
 
