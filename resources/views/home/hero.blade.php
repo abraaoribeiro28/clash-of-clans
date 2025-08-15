@@ -18,9 +18,9 @@
                     <button class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
                         Ver Rankings
                     </button>
-                    <button class="border-2 border-yellow-500 hover:bg-yellow-500 hover:text-blue-900 text-yellow-500 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <a href="{{ route('clans') }}" class="border-2 border-yellow-500 hover:bg-yellow-500 hover:text-blue-900 text-yellow-500 font-bold py-3 px-6 rounded-lg transition duration-300">
                         Buscar Clã
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">

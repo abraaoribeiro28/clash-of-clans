@@ -1,0 +1,57 @@
+.card {
+    background: rgba(26, 31, 60, 0.8);
+    border: 2px solid #F7B500;
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(247, 181, 0, 0.2);
+}
+.filter-card {
+    background: rgba(26, 31, 60, 0.6);
+    border: 1px solid rgba(247, 181, 0, 0.3);
+}
+.clan-card {
+    background: rgba(26, 31, 60, 0.9);
+    border: 1px solid rgba(247, 181, 0, 0.5);
+    transition: all 0.3s ease;
+}
+.clan-card:hover {
+    border-color: #F7B500;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(247, 181, 0, 0.3);
+}
+.trophy {
+    color: #F7B500;
+}
+.search-input {
+    background: rgba(26, 31, 60, 0.8);
+    border: 2px solid rgba(247, 181, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.search-input:focus {
+    border-color: #F7B500;
+    box-shadow: 0 0 0 3px rgba(247, 181, 0, 0.1);
+}
+.filter-select {
+    background: rgba(26, 31, 60, 0.8);
+    border: 1px solid rgba(247, 181, 0, 0.3);
+}
+.filter-select:focus {
+    border-color: #F7B500;
+}
+.badge-open {
+    background: linear-gradient(to right, #10B981, #059669);
+}
+.badge-invite {
+    background: linear-gradient(to right, #F59E0B, #D97706);
+}
+.badge-closed {
+    background: linear-gradient(to right, #EF4444, #DC2626);
+}
+.level-badge {
+    background: linear-gradient(to right, #8B5CF6, #7C3AED);
+}
+.war-badge {
+    background: linear-gradient(to right, #F97316, #EA580C);
+}
