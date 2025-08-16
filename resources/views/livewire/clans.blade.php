@@ -61,12 +61,12 @@
                 </div>
 
                 <div class="lg:col-span-3">
-                    <div class="flex justify-between items-center mb-6">
+                    <div class="sm:flex justify-between items-center mb-6">
                         <div>
                             <h2 class="text-2xl font-bold">Resultados da Busca</h2>
                             <p class="text-gray-400">Encontrados {{ count($clans['items'] ?? []) }} clãs</p>
                         </div>
-                        <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-4 sm:mt-0 mt-4">
                             <label class="text-sm">Ordenar por:</label>
                             <select wire:model.live="sort" class="filter-select px-3 py-2 rounded text-white outline-none">
                                 <option value="clanPoints" @checked($sort === 'clanPoints')>Troféus</option>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="space-y-4">
                         @empty($search)
-                            <p class="text-center">
+                            <p class="sm:text-center">
                                 Nenhuma busca realizada
                             </p>
                         @endempty

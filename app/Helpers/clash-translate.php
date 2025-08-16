@@ -54,7 +54,7 @@ if (!function_exists('translate_clan_type')) {
     {
         $map = [
             'open' => 'Aberto',
-            'inviteOnly' => 'Apenas por convite',
+            'inviteOnly' => 'Convite',
             'closed' => 'Fechado',
         ];
 

@@ -1,12 +1,12 @@
 <div class="clan-card rounded-lg p-6">
-    <div class="flex flex-col md:flex-row md:items-center justify-between">
-        <div class="flex items-center mb-4 md:mb-0">
-            <div class="w-16 h-16 flex items-center justify-center mr-4">
+    <div class="flex flex-col sm:flex-row md:items-center justify-between">
+        <div class="flex sm:flex-row flex-col items-center text-center sm:text-start mb-4 md:mb-0">
+            <div class="w-16 h-16 flex items-center justify-center sm:mr-4">
                 <img src="{{ $icon }}" alt="logo clã">
             </div>
             <div>
-                <div class="flex items-center mb-2">
-                    <h3 class="text-xl font-bold mr-3">{{ $name }}</h3>
+                <div class="flex sm:flex-row flex-col-reverse items-center mb-2 gap-y-2 mt-2 sm:mt-0">
+                    <h3 class="text-xl font-bold sm:mr-3">{{ $name }}</h3>
                     <span class="level-badge text-xs px-2 py-1 rounded-full text-white font-bold">Nível {{ $level }}</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-2">{{ $tag }} • {{ $location }}</p>
@@ -24,14 +24,16 @@
                         {{ $members }}/50
                     </span>
                     <span class="war-badge text-xs px-2 py-1 rounded-full text-white font-bold">
-                        🏆 {{ $wins }} vitórias
+                        {{ $wins }} vitórias
                     </span>
                 </div>
             </div>
         </div>
-        <div class="flex flex-col items-end space-y-2">
-            <span class="badge-open text-xs px-3 py-1 rounded-full text-white font-bold">{{ translate_clan_type($status) }}</span>
-            <p class="text-xs text-gray-400">Troféus mín: {{ $minPoints }}</p>
+        <div class="flex sm:flex-col sm:items-end items-center justify-between space-y-2">
+            <div>
+                <span class="badge-open text-xs px-3 py-1 rounded-full text-white font-bold">{{ translate_clan_type($status) }}</span>
+                <p class="text-xs text-gray-400 mt-2">Troféus mín: {{ $minPoints }}</p>
+            </div>
             <div class="flex items-center gap-2">
                 @if($labels)
                     @isset($labels[0])
@@ -48,7 +50,7 @@
         </div>
     </div>
     <div class="mt-4 pt-4 border-t border-gray-700">
-        <div class="flex items-center space-x-4 text-xs text-gray-400">
+        <div class="flex justify-center sm:justify-start items-center space-x-4 text-xs text-gray-400">
             <span>Guerra: {{ translate_war_frequency($warFrequency) }}</span>
             <span>Liga: {{ translate_league($warLeague) }}</span>
         </div>
