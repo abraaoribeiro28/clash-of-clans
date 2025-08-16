@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="flex flex-col items-end space-y-2">
-            <span class="badge-open text-xs px-3 py-1 rounded-full text-white font-bold">{{ $status }}</span>
+            <span class="badge-open text-xs px-3 py-1 rounded-full text-white font-bold">{{ translate_clan_type($status) }}</span>
             <p class="text-xs text-gray-400">Troféus mín: {{ $minPoints }}</p>
             <div class="flex items-center gap-2">
                 @if($labels)

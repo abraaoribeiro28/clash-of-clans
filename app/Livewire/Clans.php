@@ -12,6 +12,11 @@ class Clans extends Component
 {
     public string $search = '';
     public string $sort = 'clanPoints';
+    public int|null $minMembers = null;
+    public int|null $maxMembers = null;
+    public int|null $minClanPoints = null;
+    public int|null $minClanLevel = null;
+    public string|null $warFrequency = null;
     public Collection|array $clans = [];
 
     /**
@@ -22,6 +27,20 @@ class Clans extends Component
      */
     public function searchClan(ClashOfClansService $service): void
     {
-        $this->clans = $service->searchClans($this->search, $this->sort);
+        if ($this->search) {
+            $this->clans = $service->searchClans(
+                $this->search,
+                $this->minMembers,
+                $this->maxMembers,
+                $this->minClanPoints,
+                $this->minClanLevel,
+                !empty($this->warFrequency) ? $this->warFrequency : null
+            )->sortByDesc($this->sort);
+        }
+    }
+
+    public function updatedSort(): void
+    {
+        $this->clans = $this->clans ? $this->clans->sortByDesc($this->sort) : [];
     }
 }

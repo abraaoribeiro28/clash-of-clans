@@ -98,11 +98,21 @@ class ClashOfClansService
      * Search clans by name or tag, with optional sorting.
      *
      * @param string $query
-     * @param string $sortBy
+     * @param int|null $minMembers
+     * @param int|null $maxMembers
+     * @param int|null $minClanPoints
+     * @param int|null $minClanLevel
+     * @param string|null $warFrequency
      * @return Collection
-     *
      */
-    public function searchClans(string $query, string $sortBy = 'clanLevel'): Collection
+    public function searchClans(
+        string $query,
+        int|null $minMembers = null,
+        int|null $maxMembers = null,
+        int|null $minClanPoints = null,
+        int|null $minClanLevel = null,
+        string|null $warFrequency = null,
+    ): Collection
     {
         if (str_starts_with($query, '#')) {
             $clan = $this->request('get', '/clans/' . urlencode($query));
@@ -111,8 +121,13 @@ class ClashOfClansService
 
         $data = $this->request('get', '/clans', [
             'name' => $query,
+            'minMembers' => $minMembers,
+            'maxMembers' => $maxMembers,
+            'minClanPoints' => $minClanPoints,
+            'minClanLevel' => $minClanLevel,
+            'warFrequency' => $warFrequency
         ]);
 
-        return collect($data['items'] ?? [])->sortByDesc($sortBy);
+        return collect($data['items'] ?? []);
     }
 }
