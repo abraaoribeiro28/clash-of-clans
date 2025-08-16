@@ -5,18 +5,31 @@ namespace App\Livewire;
 use App\Services\ClashOfClansService;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Layout('components.layouts.app')]
 class Clans extends Component
 {
+    #[Validate('required|string|min:3|max:50')]
     public string $search = '';
-    public string $sort = 'clanPoints';
+
+    #[Validate('nullable|int|min:1|max:50')]
     public int|null $minMembers = null;
+
+    #[Validate('nullable|int|min:1|max:50')]
     public int|null $maxMembers = null;
+
+    #[Validate('nullable|int|min:1|max:50000')]
     public int|null $minClanPoints = null;
+
+    #[Validate('nullable|int|min:1|max:100')]
     public int|null $minClanLevel = null;
+
+    #[Validate('nullable|string|max:50')]
     public string|null $warFrequency = null;
+
+    public string $sort = 'clanPoints';
     public Collection|array $clans = [];
 
     /**
@@ -27,6 +40,7 @@ class Clans extends Component
      */
     public function searchClan(ClashOfClansService $service): void
     {
+        $this->validate();
         if ($this->search) {
             $this->clans = $service->searchClans(
                 $this->search,

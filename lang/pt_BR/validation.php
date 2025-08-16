@@ -235,7 +235,13 @@ return [
         'modality' => 'modalidade',
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
-        'birth_date' => 'data de nascimento'
+        'birth_date' => 'data de nascimento',
+        'search' => 'clã',
+        'minMembers' => 'mínimo de membros',
+        'maxMembers' => 'máximo de membros',
+        'minClanLevel' => 'nível mínimo do clã',
+        'warFrequency' => 'frequência de guerras',
+        'minClanPoints' => 'troféus mínimos'
     ],
 
 ];

@@ -21,26 +21,26 @@
                         </h3>
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Clã</label>
-                            <input wire:model="search" type="text" placeholder="Nome ou tag (#ABC123)" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                            <input wire:model="search" placeholder="Nome ou tag (#ABC123)" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('search')])>
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Nível do Clã</label>
-                            <input wire:model="minClanLevel" type="number" placeholder="mínimo" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                            <input wire:model="minClanLevel" type="number" placeholder="mínimo" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('minClanLevel')])>
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Membros</label>
                             <div class="flex items-baseline space-x-2">
                                 <div class="w-1/2">
-                                    <input wire:model="minMembers" type="number" placeholder="Mínimo" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                                    <input wire:model="minMembers" type="number" placeholder="Mínimo" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('minMembers')])>
                                 </div>
                                 <div class="w-1/2">
-                                    <input wire:model="maxMembers" type="number" placeholder="Máximo" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                                    <input wire:model="maxMembers" type="number" placeholder="Máximo" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('maxMembers')])>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Frequência de Guerra</label>
-                            <select wire:model="warFrequency" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                            <select wire:model="warFrequency" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('warFrequency')])>
                                 <option value="">Qualquer</option>
                                 <option value="always" @checked($warFrequency === 'always')>Sempre</option>
                                 <option value="oncePerWeek" @checked($warFrequency === 'oncePerWeek')>Uma vez por semana</option>
@@ -51,11 +51,11 @@
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Troféus Mínimos</label>
-                            <input wire:model="minClanPoints" type="number" placeholder="Ex: 2000" class="filter-select w-full px-3 py-2 rounded text-white outline-none">
+                            <input wire:model="minClanPoints" type="number" placeholder="Ex: 2000" @class(['filter-select w-full px-3 py-2 rounded text-white outline-none', '!border-red-500' => $errors->has('minClanPoints')])>
                         </div>
 
-                        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-4 rounded-lg transition duration-300">
-                            Aplicar Filtros
+                        <button type="submit" class="w-full cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Buscar
                         </button>
                     </form>
                 </div>
@@ -108,6 +108,7 @@
             </div>
         </div>
     </section>
+    <x-toast-errors/>
 </div>
 
 @push('styles')
