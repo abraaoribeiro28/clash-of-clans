@@ -9,8 +9,8 @@ use RuntimeException;
 
 class ClashOfClansService
 {
-    protected $baseUrl;
-    protected $token;
+    protected string $baseUrl;
+    protected string $token;
 
     public function __construct()
     {
@@ -92,5 +92,27 @@ class ClashOfClansService
         return collect($data['items'] ?? [])
             ->sortByDesc('id')
             ->take($limit);
+    }
+
+    /**
+     * Search clans by name or tag, with optional sorting.
+     *
+     * @param string $query
+     * @param string $sortBy
+     * @return Collection
+     *
+     */
+    public function searchClans(string $query, string $sortBy = 'clanLevel'): Collection
+    {
+        if (str_starts_with($query, '#')) {
+            $clan = $this->request('get', '/clans/' . urlencode($query));
+            return collect([$clan]);
+        }
+
+        $data = $this->request('get', '/clans', [
+            'name' => $query,
+        ]);
+
+        return collect($data['items'] ?? [])->sortByDesc($sortBy);
     }
 }
