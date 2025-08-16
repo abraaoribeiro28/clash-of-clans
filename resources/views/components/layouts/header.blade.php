@@ -7,8 +7,8 @@
             </a>
         </div>
         <nav class="hidden md:flex space-x-6">
-            <a href="#inicio" class="text-white hover:text-yellow-400 font-medium">Início</a>
-            <a href="#classificacoes" class="text-white hover:text-yellow-400 font-medium">Classificações</a>
+            <a href="/#inicio" class="text-white hover:text-yellow-400 font-medium">Início</a>
+            <a href="/#classificacoes" class="text-white hover:text-yellow-400 font-medium">Classificações</a>
         </nav>
         <button id="btn-menu" class="md:hidden text-white relative z-50">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -19,6 +19,6 @@
 </header>
 
 <div id="mobile-menu" class="fixed md:hidden top-18 right-4 bg-white rounded-lg shadow-lg p-4 hidden z-50">
-    <a href="#inicio" class="block py-2 px-3 text-gray-700 hover:bg-yellow-100 rounded">Início</a>
-    <a href="#classificacoes" class="block py-2 px-3 text-gray-700 hover:bg-yellow-100 rounded">Classificações</a>
+    <a href="/#inicio" class="block py-2 px-3 text-gray-700 hover:bg-yellow-100 rounded">Início</a>
+    <a href="/#classificacoes" class="block py-2 px-3 text-gray-700 hover:bg-yellow-100 rounded">Classificações</a>
 </div>

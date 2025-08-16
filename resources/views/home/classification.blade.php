@@ -26,9 +26,6 @@
                             </x-classification-item>
                         @endforeach
                     </ul>
-                    <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
-                        Ver Ranking Completo
-                    </button>
                 </div>
 
                 <div id="players-tab" class="card rounded-lg p-6">
@@ -55,9 +52,6 @@
                             </x-classification-item>
                         @endforeach
                     </ul>
-                    <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
-                        Ver Ranking Completo
-                    </button>
                 </div>
 
                 <div id="leagues-tab" class="card rounded-lg p-6">
@@ -68,7 +62,7 @@
                             </svg>
                             Ranking de Ligas
                         </h3>
-                        <span class="bg-blue-700 text-xs px-2 py-1 rounded-full">Todas</span>
+                        <span class="bg-blue-700 text-xs px-2 py-1 rounded-full">Top 10</span>
                     </div>
                     <ul class="space-y-2">
                         @foreach($leagues as $league)
@@ -81,9 +75,6 @@
                             </x-classification-item>
                         @endforeach
                     </ul>
-                    <button class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
-                        Ver Detalhes das Ligas
-                    </button>
                 </div>
             </div>
         </div>
