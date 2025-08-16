@@ -48,3 +48,16 @@ if (!function_exists('translate_league')) {
         return $map[$leagueName] ?? ($leagueName ?? 'Desconhecida');
     }
 }
+
+if (!function_exists('translate_clan_type')) {
+    function translate_clan_type(?string $type): string
+    {
+        $map = [
+            'open' => 'Aberto',
+            'inviteOnly' => 'Apenas por convite',
+            'closed' => 'Fechado',
+        ];
+
+        return $map[$type] ?? ($type ?? 'Desconhecido');
+    }
+}
