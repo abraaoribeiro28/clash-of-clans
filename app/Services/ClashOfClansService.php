@@ -103,6 +103,8 @@ class ClashOfClansService
      * @param int|null $minClanPoints
      * @param int|null $minClanLevel
      * @param string|null $warFrequency
+     * @param int $limit
+     *
      * @return Collection
      */
     public function searchClans(
@@ -112,6 +114,9 @@ class ClashOfClansService
         int|null $minClanPoints = null,
         int|null $minClanLevel = null,
         string|null $warFrequency = null,
+        int $limit = 10,
+        string|null $after = null,
+        string|null $before = null,
     ): Collection
     {
         if (str_starts_with($query, '#')) {
@@ -119,15 +124,26 @@ class ClashOfClansService
             return collect([$clan]);
         }
 
-        $data = $this->request('get', '/clans', [
+        $params = [
             'name' => $query,
             'minMembers' => $minMembers,
             'maxMembers' => $maxMembers,
             'minClanPoints' => $minClanPoints,
             'minClanLevel' => $minClanLevel,
-            'warFrequency' => $warFrequency
-        ]);
+            'warFrequency' => $warFrequency,
+            'limit' => $limit,
+        ];
 
-        return collect($data['items'] ?? []);
+        if ($after) {
+            $params['after'] = $after;
+        }
+
+        if ($before) {
+            $params['before'] = $before;
+        }
+
+        $data = $this->request('get', '/clans', $params);
+
+        return collect($data ?? []);
     }
 }

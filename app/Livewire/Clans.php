@@ -32,23 +32,29 @@ class Clans extends Component
     public string $sort = 'clanPoints';
     public Collection|array $clans = [];
 
+    protected ClashOfClansService $service;
+
+    public function __construct()
+    {
+        $this->service = new ClashOfClansService();
+    }
+
     /**
      * Search for clans using the Clash of Clans API service.
      *
-     * @param ClashOfClansService $service
      * @return void
      */
-    public function searchClan(ClashOfClansService $service): void
+    public function searchClan(): void
     {
         $this->validate();
         if ($this->search) {
-            $this->clans = $service->searchClans(
+            $this->clans = $this->service->searchClans(
                 $this->search,
                 $this->minMembers,
                 $this->maxMembers,
                 $this->minClanPoints,
                 $this->minClanLevel,
-                !empty($this->warFrequency) ? $this->warFrequency : null
+                !empty($this->warFrequency) ? $this->warFrequency : null,
             )->sortByDesc($this->sort);
         }
     }
@@ -56,5 +62,15 @@ class Clans extends Component
     public function updatedSort(): void
     {
         $this->clans = $this->clans ? $this->clans->sortByDesc($this->sort) : [];
+    }
+
+    public function next(string $after): void
+    {
+        $this->clans = $this->service->searchClans($this->search, after: $after);
+    }
+
+    public function previous(string $before): void
+    {
+        $this->clans = $this->service->searchClans($this->search, before: $before);
     }
 }

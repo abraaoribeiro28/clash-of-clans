@@ -64,7 +64,7 @@
                     <div class="flex justify-between items-center mb-6">
                         <div>
                             <h2 class="text-2xl font-bold">Resultados da Busca</h2>
-                            <p class="text-gray-400">Encontrados {{ count($clans) }} clãs</p>
+                            <p class="text-gray-400">Encontrados {{ count($clans['items'] ?? []) }} clãs</p>
                         </div>
                         <div class="flex items-center space-x-4">
                             <label class="text-sm">Ordenar por:</label>
@@ -80,7 +80,7 @@
                                 Nenhuma busca realizada
                             </p>
                         @endempty
-                        @forelse($clans as $clan)
+                        @forelse($clans['items'] ?? [] as $clan)
                             <x-card-clan
                                 :name="$clan['name']"
                                 :level="$clan['clanLevel']"
@@ -104,6 +104,27 @@
                             @endif
                         @endforelse
                     </div>
+                    <div class="flex justify-end mt-8">
+                        <div class="flex space-x-2">
+                            @isset($clans['paging']['cursors']['before'])
+                                @php $before = $clans['paging']['cursors']['before']; @endphp
+                                <button wire:click="previous('{{$before}}')" class="cursor-pointer px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            @endisset
+                            @isset($clans['paging']['cursors']['after'])
+                                @php $after = $clans['paging']['cursors']['after']; @endphp
+                                <button wire:click="next('{{$after}}')" class="cursor-pointer px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            @endisset
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
