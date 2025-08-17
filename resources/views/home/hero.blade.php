@@ -15,10 +15,10 @@
                     <br>para se tornar uma lenda em Clash of Clans!
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
-                        Ver Rankings
-                    </button>
-                    <a href="{{ route('clans') }}" class="border-2 border-yellow-500 hover:bg-yellow-500 hover:text-blue-900 text-yellow-500 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <a href="#registre-se" class="text-center bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
+                        Registre-se
+                    </a>
+                    <a href="{{ route('clans') }}" class="text-center border-2 border-yellow-500 hover:bg-yellow-500 hover:text-blue-900 text-yellow-500 font-bold py-3 px-6 rounded-lg transition duration-300">
                         Buscar Clã
                     </a>
                 </div>
