@@ -57,7 +57,7 @@ class AddPlayer extends Component
      */
     public function save(): void
     {
-        Player::updateOrCreate(['tag' => $this->tag], [
+        Player::updateOrCreate(['tag' => $this->player['tag']], [
             'name' => $this->player['name'],
             'trophies' => $this->player['trophies'],
             'bestTrophies' => $this->player['bestTrophies'],
@@ -65,11 +65,13 @@ class AddPlayer extends Component
             'attackWins' => $this->player['attackWins'],
             'defenseWins' => $this->player['defenseWins'],
             'donations' => $this->player['donations'],
-            'clanName' => $this->player['clan']['name'],
-            'clanTag' => $this->player['clan']['tag'],
-            'league' => $this->player['league']['name'],
-            'leagueIcon' => $this->player['league']['iconUrls']['small'],
+            'clanName' => $this->player['clan']['name'] ?? null,
+            'clanTag' => $this->player['clan']['tag'] ?? null,
+            'league' => $this->player['league']['name'] ?? null,
+            'leagueIcon' => $this->player['league']['iconUrls']['small'] ?? null,
         ]);
+
+        $this->dispatch('updated-players',);
 
         $this->dispatch(
             'notify',

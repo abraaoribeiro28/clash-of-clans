@@ -47,9 +47,7 @@
                                 details="{{ $player['tag'] }} • {{ $player['clan']['name'] }}"
                                 :points="$player['trophies']"
                                 :position="$player['rank']"
-                            >
-                                <img src="{{ $player['clan']['badgeUrls']['small'] }}" alt="badge">
-                            </x-classification-item>
+                            />
                         @endforeach
                     </ul>
                 </div>
@@ -68,7 +66,7 @@
                         @foreach($leagues as $league)
                             <x-classification-item
                                 type="league"
-                                :name="$league['name']"
+                                :name="translate_league($league['name'])"
                                 :position="$loop->iteration"
                             >
                                 <img src="{{ $league['iconUrls']['small'] }}" alt="badge">

@@ -11,9 +11,11 @@
         <span @class(['pr-3' => $position == 1, 'pr-5' => $position > 1])></span>
     @endif
     <div class="w-full flex flex-wrap items-center">
-        <div class="sm:w-10 sm:h-10 w-8 h-8 flex items-center justify-center mr-3">
-            {{ $slot }}
-        </div>
+        @if($slot != '')
+            <div class="sm:w-10 sm:h-10 w-8 h-8 flex items-center justify-center mr-3">
+                {{ $slot }}
+            </div>
+        @endif
         <div class="flex-grow sm:mb-0 mb-2">
             <h4 class="font-bold">{{ $name }}</h4>
             @if($type !== 'league')

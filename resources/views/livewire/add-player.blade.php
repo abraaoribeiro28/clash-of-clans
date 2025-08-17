@@ -53,8 +53,8 @@
                 <div class="flex items-center mb-6">
                     <div class="flex-grow">
                         <h2 id="playerName" class="text-2xl font-bold mb-1">{{ $player['name'] }}</h2>
-                        <p id="playerTag" class="text-yellow-400 font-mono text-lg">{{ $player['tag']  }}</p>
-                        <p id="playerClan" class="text-gray-400">{{ $player['clan']['name'] }}</p>
+                        <p id="playerTag" class="text-yellow-400 font-mono text-lg">{{ $player['tag'] }}</p>
+                        <p id="playerClan" class="text-gray-400">{{ $player['clan']['name'] ?? 'Sem clã' }}</p>
                     </div>
                     <div class="text-right">
                         <div class="flex items-center justify-end mb-2">
@@ -94,11 +94,13 @@
                 </div>
                 <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-lg p-4 mb-6">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 flex items-center justify-center mr-4">
-                            <img src="{{ $player['league']['iconUrls']['small'] }}" alt="ícone da liga">
-                        </div>
+                        @isset($player['league'])
+                            <div class="w-12 h-12 flex items-center justify-center mr-4">
+                                <img src="{{ $player['league']['iconUrls']['small'] }}" alt="ícone da liga">
+                            </div>
+                        @endif
                         <div>
-                            <h4 class="font-bold" id="playerLeague">{{ $player['league']['name'] }}</h4>
+                            <h4 class="font-bold" id="playerLeague">{{ $player['league']['name'] ?? 'Sem classificação' }}</h4>
                             <p class="text-sm text-gray-400">Liga atual</p>
                         </div>
                     </div>
