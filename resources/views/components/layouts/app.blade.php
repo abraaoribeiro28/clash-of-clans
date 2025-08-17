@@ -13,5 +13,6 @@
         {{ $slot }}
     </main>
     <x-layouts.footer/>
+    <x-toast/>
 </body>
 </html>
