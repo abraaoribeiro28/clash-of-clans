@@ -61,3 +61,65 @@ if (!function_exists('translate_clan_type')) {
         return $map[$type] ?? ($type ?? 'Desconhecido');
     }
 }
+
+if (!function_exists('leaguesSelect')) {
+    function leaguesSelect(): array
+    {
+        return [
+            'Bronze League' => 'Liga Bronze',
+            'Silver League' => 'Liga Prata',
+            'Gold League' => 'Liga Ouro',
+            'Crystal League' => 'Liga Cristal',
+            'Master League' => 'Liga Mestre',
+            'Champion League' => 'Liga Campeão',
+            'Titan League' => 'Liga Titã',
+            'Legend League' => 'Liga Lendária',
+        ];
+    }
+}
+
+if (!function_exists('leaguesGroup')) {
+    function leaguesGroup(): array
+    {
+        return [
+            'Bronze League' => [
+                'Bronze League I',
+                'Bronze League II',
+                'Bronze League III',
+            ],
+            'Silver League' => [
+                'Silver League I',
+                'Silver League II',
+                'Silver League III',
+            ],
+            'Gold League' => [
+                'Gold League I',
+                'Gold League II',
+                'Gold League III',
+            ],
+            'Crystal League' => [
+                'Crystal League I',
+                'Crystal League II',
+                'Crystal League III',
+            ],
+            'Master League' => [
+                'Master League I',
+                'Master League II',
+                'Master League III',
+            ],
+            'Champion League' => [
+                'Champion League I',
+                'Champion League II',
+                'Champion League III',
+            ],
+            'Titan League' => [
+                'Titan League I',
+                'Titan League II',
+                'Titan League III',
+            ],
+            'Legend League' => [
+                'Legend League'
+            ],
+        ];
+    }
+}

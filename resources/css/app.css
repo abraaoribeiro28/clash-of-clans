@@ -108,3 +108,28 @@ html {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
+.player-row {
+    background: linear-gradient(135deg, rgba(26, 31, 60, 0.8) 0%, rgba(45, 27, 105, 0.8) 100%);
+    border: 1px solid rgba(247, 181, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.player-row:hover {
+    border-color: #F7B500;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(247, 181, 0, 0.1);
+}
+.rank-badge {
+    background: linear-gradient(135deg, #F7B500 0%, #F97316 100%);
+    box-shadow: 0 0 15px rgba(247, 181, 0, 0.3);
+}
+.top-3 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+    to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+}
+.league-icon {
+    filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5));
+}
