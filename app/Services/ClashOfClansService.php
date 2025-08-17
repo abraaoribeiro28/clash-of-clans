@@ -35,7 +35,7 @@ class ClashOfClansService
             ->$method($this->baseUrl . $endpoint, $params);
 
         if ($response->failed()) {
-            throw new RuntimeException("Clash of Clans API error: " . $response->body());
+            return ['error' => true, 'message' => $response->body()];
         }
 
         return $response->json();
@@ -145,5 +145,19 @@ class ClashOfClansService
         $data = $this->request('get', '/clans', $params);
 
         return collect($data ?? []);
+    }
+
+    /**
+     * Retrieve player information from the Clash of Clans API.
+     *
+     * @param string $tag
+     *
+     * @return array
+     */
+    public function getPlayer(string $tag): array
+    {
+        $encodedTag = urlencode($tag);
+
+        return $this->request('get', "/players/{$encodedTag}");
     }
 }

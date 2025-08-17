@@ -69,3 +69,42 @@ html {
     background: linear-gradient(to right, rgba(205, 127, 50, 0.2), transparent);
     border-left: 3px solid #CD7F32;
 }
+.card {
+    background: rgba(26, 31, 60, 0.9);
+    border: 2px solid #F7B500;
+    backdrop-filter: blur(10px);
+}
+.search-input {
+    background: rgba(26, 31, 60, 0.8);
+    border: 2px solid rgba(247, 181, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.search-input:focus {
+    border-color: #F7B500;
+    box-shadow: 0 0 0 3px rgba(247, 181, 0, 0.1);
+}
+.player-card {
+    background: linear-gradient(135deg, rgba(26, 31, 60, 0.9) 0%, rgba(45, 27, 105, 0.9) 100%);
+    border: 2px solid #F7B500;
+    backdrop-filter: blur(10px);
+}
+.stat-item {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid #F7B500;
+}
+.loading-spinner {
+    border: 3px solid rgba(247, 181, 0, 0.3);
+    border-top: 3px solid #F7B500;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
