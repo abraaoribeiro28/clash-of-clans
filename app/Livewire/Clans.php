@@ -31,6 +31,7 @@ class Clans extends Component
 
     public string $sort = 'clanPoints';
     public Collection|array $clans = [];
+    public array|null $pages = [];
 
     protected ClashOfClansService $service;
 
@@ -47,28 +48,51 @@ class Clans extends Component
     public function searchClan(): void
     {
         $this->validate();
-        if ($this->search) {
-            $this->clans = $this->service->searchClans(
-                $this->search,
-                $this->minMembers,
-                $this->maxMembers,
-                $this->minClanPoints,
-                $this->minClanLevel,
-                !empty($this->warFrequency) ? $this->warFrequency : null,
-            )->sortByDesc($this->sort);
+
+        if (! $this->search) {
+            return;
         }
+
+        $result = $this->service->searchClans(
+            $this->search,
+            $this->minMembers,
+            $this->maxMembers,
+            $this->minClanPoints,
+            $this->minClanLevel,
+            $this->warFrequency ?: null,
+        );
+
+        $this->clans = $result['items']->sortByDesc($this->sort);
+        $this->pages = $result['paging'];
     }
 
+    /**
+     * Sort the current clans collection by the given property in descending order.
+     *
+     * @return void
+     */
     public function updatedSort(): void
     {
         $this->clans = $this->clans ? $this->clans->sortByDesc($this->sort) : [];
     }
 
+    /**
+     * Load the next page of clans based on the "after" cursor.
+     *
+     * @param string $after
+     * @return void
+     */
     public function next(string $after): void
     {
         $this->clans = $this->service->searchClans($this->search, after: $after);
     }
 
+    /**
+     * Load the previous page of clans based on the "before" cursor.
+     *
+     * @param string $before
+     * @return void
+     */
     public function previous(string $before): void
     {
         $this->clans = $this->service->searchClans($this->search, before: $before);
