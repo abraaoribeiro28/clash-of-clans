@@ -3,6 +3,8 @@
 O projeto consome a **API oficial do Clash of Clans** para **ranqueamento de jogadores, clãs e ligas**, além de permitir buscas por clãs e jogadores.  
 Desenvolvido em **Laravel + Livewire**, com interface responsiva e dinâmica.
 
+**Demo** - [clash.abraaodev.com.br](https://www.clash.abraaodev.com.br)
+
 ---
 
 ## Funcionalidades
@@ -11,7 +13,8 @@ Desenvolvido em **Laravel + Livewire**, com interface responsiva e dinâmica.
 -  **Ranking de clãs** – classificação dos clãs por troféus.  
 -  **Ligas** – listagem das principais ligas.  
 -  **Busca** – pesquisa de clãs e jogadores por nome, tag e filtros adicionais.
--  **Ranqueamento da Plataforma** – classificação dos jogadores cadastrados na plataforma, mostrando sua posição. 
+-  **Ranqueamento da Plataforma** – classificação dos jogadores cadastrados na plataforma, mostrando sua posição.
+-  **Atualização automática** - a cada 1 hora, jobs buscam e atualizam as informações dos jogadores.
 
 ---
 
@@ -65,3 +68,10 @@ php artisan migrate --seed
 
 # Iniciar servidor
 php artisan serve
+```
+
+**Atualização**: caso queira atualizar os dados do ranqueamento da plataforma, execute: 
+```bash
+php artisan schedule:run
+php artisan queue:work
+```
