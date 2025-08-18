@@ -47,12 +47,15 @@ npm install && npm run build
 # Criar arquivo de configuração
 cp .env.example .env
 
-#⚠️ Se for usar SQLite, crie um arquivo `database/database.sqlite` e ajuste no `.env`:
+# Se for usar SQLite, crie um arquivo `database/database.sqlite` e ajuste no `.env`:
 
 DB_CONNECTION=sqlite  
 DB_DATABASE=/caminho/para/seu/database/database.sqlite
 
-#Para outros bancos (MySQL, PostgreSQL), configure as variáveis `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` e `DB_PASSWORD` conforme seu ambiente.
+# Para outros bancos (MySQL, PostgreSQL), configure as variáveis `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` e `DB_PASSWORD` conforme seu ambiente.
+
+# Adicione o token da api no .env (entre aspas "")
+CLASH_API_TOKEN=
 
 # Gerar chave da aplicação
 php artisan key:generate
