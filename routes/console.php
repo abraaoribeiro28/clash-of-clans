@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use App\Jobs\UpdateClashPlayerJob;
+use App\Models\Player;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Schedule::call(function () {
+    $users = Player::all();
+    foreach ($users as $user) {
+        dispatch(new UpdateClashPlayerJob($user->id));
+    }
+})->everyMinute();

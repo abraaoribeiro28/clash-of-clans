@@ -44,7 +44,7 @@
                             <x-classification-item
                                 type="players"
                                 :name="$player['name']"
-                                details="{{ $player['tag'] }} • {{ $player['clan']['name'] }}"
+                                details="{{ $player['tag'] }} • {{ $player['clan']['name'] ?? 'Sem clã' }}"
                                 :points="$player['trophies']"
                                 :position="$player['rank']"
                             />
