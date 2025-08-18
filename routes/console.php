@@ -8,4 +8,4 @@ Schedule::call(function () {
     foreach ($users as $user) {
         dispatch(new UpdateClashPlayerJob($user->id));
     }
-})->everyMinute();
+})->hourly();
